@@ -1,0 +1,28 @@
+.btn,
+.jumbotron,
+.nav :hover {
+  border-radius: 0px;
+}
+
+body {
+  background: #343a40;
+  height: 100%;
+}
+
+.navigation{
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0%;
+}
+
+footer{
+  /* position: absolute; */
+  height: 8%;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+.scroll{
+  overflow: auto;
+}
