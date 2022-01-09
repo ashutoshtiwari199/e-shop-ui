@@ -18,15 +18,10 @@ function Base({
                 </div>
                 <div className={className}>{children}</div>
             </div>
-            <footer className="footer bg-dark mt-auto py-3">
-                <div className="container-fluid bg-success text-white text-center p-2">
-                    <h4>If You got any Question feel free to reach out</h4>
-                    <button className="btn btn-warning btn-sm">Contact US</button>
-                </div>
-                <div className="container">
-                    <span className="text-muted">
-                        An Amazing place to buy T-shirt
-                    </span>
+            <footer className="footer bg-dark mt-auto py-3 mb-0">
+                <div className="container-fluid bg-success text-white text-center p-2 mb-0">
+                    <h5>If You got any Question feel free to reach out</h5>
+                    <h5>okayashutosh@gmail.com</h5>
                 </div>
             </footer>
         </div>

@@ -47,7 +47,7 @@ const ManageCategory= ()=> {
       </Link>
       <div className="row">
         <div className="col-12">
-          <h2 className="text-center text-white my-3">Total 3 products</h2>
+          <h2 className="text-center text-white my-3">Total {categories.length} Category</h2>
         {categories.map((category, index)=>{
             return(
           <div className="row text-center mb-2 ">
@@ -55,12 +55,12 @@ const ManageCategory= ()=> {
               <h3 className="text-white text-left">{category.name}</h3>
             </div>
             <div className="col-4">
-              <Link
+              {/* <Link
                 className="btn btn-success"
                 to={`/admin/category/update/${category._id}`}
               >
-                <span className="">Update{category._id}</span>
-              </Link>
+                <span className="">Update</span>
+              </Link> */}
             </div>
             <div className="col-4">
               <button onClick={() => deleteThisCategory(category._id)} className="btn btn-danger">

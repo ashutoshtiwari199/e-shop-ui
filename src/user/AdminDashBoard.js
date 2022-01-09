@@ -6,31 +6,19 @@ import Base from '../core/Base'
 
 const AdminDashBoard =()=>{
 
-    const {user: {name, email, role}} = isAuthenticated();
+    const {user: {name, email}} = isAuthenticated();
 
     const adminLeftSide=()=>{
         return(
             <div className="card overflow-auto">
                 <h4 className="card-header bg-dark text-white">Admin Navigation</h4>
                 <ul className="list-group scroll ">
-                    {/* <li className="list-group-item"> */}
                         <Link to="/admin/create/category" className="nav-link text-info">Create category</Link>
-                    {/* </li> */}
-                    {/* <li className="list-group-item"> */}
                         <Link to="/admin/categories" className="nav-link text-info">Manage category</Link>
-                    {/* </li> */}
-                    {/* <li className="list-group-item"> */}
                         <Link to="/admin/create/product" className="nav-link text-info">Create Product</Link>
-                    {/* </li> */}
-                    {/* <li className="list-group-item"> */}
                         <Link to="/admin/products" className="nav-link text-info">Manage Product</Link>
-                    {/* </li> */}
-                    {/* <li className="list-group-item"> */}
                         <Link to="/admin/orders" className="nav-link text-info">Manage Order</Link>
-                    {/* </li> */}
-                    {/* <li className="list-group-item"> */}
                     <Link to="/admin/create/product" className="nav-link text-info">Add Product</Link>
-                    {/* </li> */}
                 </ul>
             </div>
         )

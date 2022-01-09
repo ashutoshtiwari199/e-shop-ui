@@ -27,11 +27,7 @@ const UpdateCategory=({match})=> {
     )
 
     const preLoad=(categoryId)=>{
-        console.log("from preload",categoryId)
         getaCategory(categoryId).then(data=>{
-            console.log('====================================');
-            console.log(data);
-            console.log('====================================');
             if (data.error) {
                 setError( true );
               } else {
@@ -42,7 +38,6 @@ const UpdateCategory=({match})=> {
 
     useEffect(() => {
         preLoad(match.params.categoryId)
-        console.log("from use effect",match.params.categoryId)
     }, [])
 
         const handleChange=(event)=>{

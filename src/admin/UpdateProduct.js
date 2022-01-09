@@ -41,25 +41,22 @@ const UpdateProduct = ({match}) => {
   } = values;
 
 
-  // const preLoadCategories=()=>{
-  //   getAllCategories().then(data=>{
-  //     if(data.error){
-  //       setValues({ ...values, error: data.error });
-  //     } else{
-  //       console.log(data)
-  //       setValues({
-  //         categories: data, 
-  //         formData: new FormData()
-  //       })
-  //     }
-  //   })
-  // }
+  const preLoadCategories=()=>{
+    getAllCategories().then(data=>{
+      if(data.error){
+        setValues({ ...values, error: data.error });
+      } else{
+        setValues({
+          categories: data, 
+          formData: new FormData()
+        })
+      }
+    })
+  }
 
 
   const preload = productId => {
     getaProduct(productId).then(data => {
-      console.log(data, categories);
-
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -68,11 +65,11 @@ const UpdateProduct = ({match}) => {
           name: data.name,
           description: data.description,
           price: data.price,
-          category: data.category._id,
+          category: data? data.category._id:"",
           stock: data.stock,
           formData: new FormData(),
         });
-        // preLoadCategories();
+        preLoadCategories();
       }
     });
   };

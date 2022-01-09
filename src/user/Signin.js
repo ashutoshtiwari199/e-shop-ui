@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Base from "../core/Base";
 
 import { signin, authenticate, isAuthenticated } from "../auth/helper";
@@ -109,7 +109,6 @@ const Signin=()=>{
             {errorMessage()}
             {signInForm()}
             {performRedirect()} 
-            <p className="text-white text-center">{JSON.stringify(values)}</p>
         </Base>
     )
 }

@@ -134,14 +134,14 @@ export const updateProduct=(productId,userId, token, product)=>{
 
 // Update the category
 
-export const updateCategory=(categoryId,userId, token, category)=>{
+export const updateCategory=(categoryId,userId, token, name)=>{
     return fetch(`${API}category/${categoryId}/${userId}`,{
         method:"PUT",
         headers:{
             Accept:"application/json",
             Authorization: `Bearer ${token}`
         },
-        body: category
+        body: name
     })
     .then(response=>{
         return response.json()

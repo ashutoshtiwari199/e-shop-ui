@@ -31,20 +31,15 @@ const Menu =({history})=>{
                     <Fragment>
                         <li className="nav-item">
                             <Link style={currentActiveTab(history,"/user/dashboard")} className="nav-link" to="/user/dashboard" >
-                                U. DashBoard
+                                User DashBoard
                             </Link>
                         </li>
                         </Fragment>
                         :
                         <Fragment>
                         <li className="nav-item">
-                            <Link style={currentActiveTab(history,"/user/dashboard")} className="nav-link" to="/user/dashboard" >
-                                U. DashBoard
-                            </Link>
-                        </li>
-                        <li className="nav-item">
                             <Link style={currentActiveTab(history,"/admin/dashboard")} className="nav-link" to="/admin/dashboard" >
-                                A. DashBoard
+                                Admin DashBoard
                             </Link>
                         </li>
                     </Fragment>

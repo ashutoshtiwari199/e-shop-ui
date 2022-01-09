@@ -1,7 +1,6 @@
 import React,{ useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
 import { isAuthenticated } from '../auth/helper'
-import { cartEmpty, loadCart } from './helper/cartHelper'
+import { cartEmpty} from './helper/cartHelper'
 import { createOder } from './helper/orderHelper'
 import { getmeToken, proccessPayment } from './helper/paymentbhelper'
 
@@ -23,19 +22,25 @@ const Paymentb=({products, setReload = f=>f, reload=undefined} )=> {
     const token = isAuthenticated() && isAuthenticated().token;
 
     const getToken=(userId, token)=>{
+        if(userId && token){
+
         getmeToken(userId, token).then(info=>{
             if(info.error){
                 setInfo({...info, error: info.error})
+                console.log("from paymentb",info);
             }else{
                 const clientToken = info.clientToken
                 setInfo({clientToken})
             }
         })
+    } else {
+        console.log("please login first");
+    }
     }
 
     const showBtnDropIn=()=>(
         <div>
-            {info.clientToken !== null && products.length > 0 ? (
+            { info.clientToken !== null &&  userId && token  ? (
                 <div className='text-center' >
                    <DropIn
                     options={{ authorization: info.clientToken }}
@@ -43,9 +48,8 @@ const Paymentb=({products, setReload = f=>f, reload=undefined} )=> {
                    />
                     <button className='btn btn-block btn-success' onClick={()=>{onPurchase()}}>Buy</button>
                 </div>
-            ) :(
-                <h3>Please log in or add something to cart</h3>
-            ) }
+            ) :  (products.length <= 0)
+             ? <h3>Please add something to cart</h3>: <h3>Please Login first</h3> }
         </div>
     )
 
@@ -68,7 +72,7 @@ const Paymentb=({products, setReload = f=>f, reload=undefined} )=> {
                 proccessPayment(userId, token, paymentData)
                 .then(res=>{
                     setInfo({...info,loading:false, success:res.success})
-                    console.log("PAYMENT SUCCESS")
+                    console.log("PAYMENT SUCCESS",res)
 
                     const orderData={
                         products: products,
@@ -78,14 +82,13 @@ const Paymentb=({products, setReload = f=>f, reload=undefined} )=> {
 
                     createOder(userId,token,orderData)
                     cartEmpty(()=>{
-                        console.log("Should be crashd");
                     })
                     //TODO: Force Reload
                     setReload(!reload)
                 })
                 .catch(err=>{
                     setInfo({loading:false, success: false})
-                    console.log("PAYMENT FAILED")
+                    console.log("FAILED", err)
                 })
             })
     }

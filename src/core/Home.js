@@ -35,9 +35,9 @@ export default function Home() {
   return (
     <Base title="Home Page" discription="WelCome to the T-Shirt Store">
       <div className="row text-center">
-        <h1 className="text-white">All of T-shirt</h1>
+        <h3 className="text-white ">All of T-shirt</h3>
         <div className="row">
-          {products.map((item, index)=>{
+          {products && products.map((item, index)=>{
             return(
               <div key={index} className="col-4 mb-4">
                 <Card product={item} />
